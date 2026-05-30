@@ -19,7 +19,7 @@ export default function App() {
     setError(null);
 
     try {
-      const res = await fetch("https://anakin-hawkeye-api.onrender.com/", {
+      const res = await fetch("https://anakin-hawkeye-api.onrender.com/analyze/query", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
