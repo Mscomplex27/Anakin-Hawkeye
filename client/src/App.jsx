@@ -17,9 +17,10 @@ export default function App() {
     setLoading(true);
     setResult(null);
     setError(null);
+    const API_BASE = (import.meta.env.VITE_API_URL || "https://anakin-hawkeye-api.onrender.com").replace(/\/+$/g, "");
 
     try {
-      const res = await fetch("https://anakin-hawkeye-api.onrender.com/analyze/query", {
+      const res = await fetch(`${API_BASE}/analyze/query`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
