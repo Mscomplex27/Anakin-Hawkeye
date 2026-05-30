@@ -68,9 +68,13 @@ async function scrapeAmazon(query) {
     console.error("WIRE: Timed out waiting for completion");
     return null;
   } catch (err) {
-    console.error("[WIRE ERROR]", err.message);
-    return null;
-  }
+      console.error(
+        "[WIRE ERROR]",
+        err.response?.status,
+        JSON.stringify(err.response?.data, null, 2)
+      );
+      return null;
+    }
 }
 
 function sleep(ms) {
@@ -78,3 +82,6 @@ function sleep(ms) {
 }
 
 module.exports = { scrapeAmazon };
+
+console.log("ANAKIN KEY EXISTS:", !!process.env.ANAKIN_API_KEY);
+console.log("WIRE RESPONSE:", submitRes.data);
