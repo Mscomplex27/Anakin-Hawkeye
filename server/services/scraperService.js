@@ -68,9 +68,18 @@ async function scrapeAmazon(query) {
     console.error("WIRE: Timed out waiting for completion");
     return null;
   } catch (err) {
-    console.error("[WIRE ERROR]", err.message);
-    return null;
-  }
+      console.error(
+        "WIRE ERROR STATUS:",
+        err.response?.status
+      );
+
+      console.error(
+        "WIRE ERROR DATA:",
+        err.response?.data
+      );
+
+      return null;
+    }
 }
 
 function sleep(ms) {
